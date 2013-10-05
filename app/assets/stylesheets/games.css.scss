@@ -1,3 +1,65 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#game-wrapper {
+  height: 350px;
+  width: 600px;
+  text-align: center;
+  font-family: Helvetica;
+}
+
+#instructions{
+  margin-top: 40px;
+  text-align: left;
+  width: 275px;
+  margin: auto;
+}
+
+#strikes-wrapper {
+  font-size: 30px;
+  color: purple;
+}
+
+.hang-char {
+  display: inline-block;
+  width: 20px;
+  margin-left: 10px;
+  border-bottom: solid 2px black;
+  font-size: 30px;
+}
+
+#hangman-board {
+  margin-bottom: 20px;
+}
+
+#facebook-login {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#hangman-board {
+  margin-top: 80px;
+}
+
+#win-loss, #message, #restart {
+  min-height: 20px;
+}
+
+.win {
+  color: green;
+  font-weight: bold;
+}
+
+.lose {
+  color: red;
+  font-weight: bold;
+}
