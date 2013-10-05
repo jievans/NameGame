@@ -11,9 +11,13 @@
 
 #game-wrapper {
   height: 350px;
-  width: 600px;
+  width: 570px;
   text-align: center;
   font-family: Helvetica;
+}
+
+.no-login {
+  text-align: center;
 }
 
 #instructions{
@@ -28,9 +32,13 @@
   color: purple;
 }
 
+#active-game-wrapper {
+  display: none;
+}
+
 .hang-char {
   display: inline-block;
-  width: 20px;
+  width: 30px;
   margin-left: 10px;
   border-bottom: solid 2px black;
   font-size: 30px;
@@ -40,7 +48,7 @@
   margin-bottom: 20px;
 }
 
-#facebook-login {
+.login-status {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -50,7 +58,7 @@
   margin-top: 80px;
 }
 
-#win-loss, #message, #restart {
+#win-loss, #message, #restart, #guessed-letters {
   min-height: 20px;
 }
 

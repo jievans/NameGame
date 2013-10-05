@@ -21,6 +21,11 @@
       // login status of the person. In this case, we're handling the situation where they 
       // have logged in to the app.
       testAPI();
+      $(".login-widget").remove()
+                        .removeClass()
+                        .addClass("login-status")
+                        .appendTo("body");
+      $("#active-game-wrapper").show();
       startGame();
       
       
@@ -86,36 +91,47 @@
   Learn more about options for the login button plugin:
   /docs/reference/plugins/login/ -->
 
-<div id="facebook-login">
+<!-- <div class="login-status">
 <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
-</div>
+</div> -->
 
 <div class="absolute-center" id="game-wrapper">
   <h1>How well do you know your friends?</h1>
+  <div class="login-widget">
+  <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+  </div>
   
-  <div id="hangman-board">
-  </div>
+  <div id="active-game-wrapper">
+    <div id="hangman-board">
+    </div>
+    
+    <div id="guessed-letters-wrapper">
+      Guessed Letters: 
+      <span id="guessed-letters">
+      </span>
+    </div>
 
-  <div id="restart">
-  </div>
+    <div id="restart">
+    </div>
 
-  <div id="win-loss">
-  </div>
+    <div id="win-loss">
+    </div>
 
-  <div id="message">
-  </div>
+    <div id="message">
+    </div>
 
-  <div id="strikes-wrapper">
-    Strikes: 
-    <span id="strikes">
-    </span>
+    <div id="strikes-wrapper">
+      Strikes: 
+      <span id="strikes">
+      </span>
+    </div>
   </div>
   
   <div id="instructions">
     <ol>
     <li>the game is hangman
     <li>the words are your friends' last names
-    <li>all words are lower case
+    <li>all letters are lower case
     <li>six strikes and you're out!
     </ol>
   <div>

@@ -44,6 +44,7 @@
   
   Game.prototype.setupFreshBoard = function(){
     this.pickName();
+    this.prevGuesses = Object.create(null);
     this.strikes = 0; 
     $("#strikes").html(this.strikes); 
     this.buildBoard();  
@@ -52,7 +53,20 @@
   
   Game.prototype.newLetterListener = function(game){
     return function(event){
+      if( !game.checkProperGuess(event.keyCode) ){
+        return true;
+      }
       var character = String.fromCharCode(event.keyCode + 32);
+      if(game.prevGuesses[character]){
+        $("#message").html("You've already guessed that letter!");
+        return true;
+      } else {
+        $("#message").empty();
+        game.prevGuesses[character] = true;
+        var prevGuessString = Object.keys(game.prevGuesses).join(", ");
+        $("#guessed-letters").html(prevGuessString);
+      }
+      
       if(game.letterHash[character] == undefined){
         game.strikes++;
         $("#strikes").html(game.strikes);
@@ -66,6 +80,14 @@
         game.checkWin();
       }
     };
+  };
+  
+  Game.prototype.checkProperGuess = function(keycode){
+    if(keycode < 49 || keycode > 90){
+      return false;
+    } else {
+      return true;
+    }
   };
   
   Game.prototype.restartPrompt = function(){
