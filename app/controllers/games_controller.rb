@@ -7,7 +7,5 @@ class GamesController < ApplicationController
       @app_id = "400254313434669"
       @host= "localhost:3000"
     end
-    
-    
   end
 end

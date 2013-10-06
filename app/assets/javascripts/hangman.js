@@ -14,10 +14,14 @@
     $("body").on("keyup.turns", this.newLetterListener(this));
   };
   
-  // the name is picked randomly and then removed from the names array, so as not to be repeated in subsequent plays. also generates a letter frequency hash that serves to: 1) check the presence of a letter and 2) provide the indices of that letter in the string.
-  Game.prototype.pickName = function(){
+  // the name is picked randomly and then removed from the names array, so as not to be repeated in subsequent plays. also generates a letter frequency hash that serves to: 1) check the presence of a letter and 2) provide the indices of that letter in the string if present.
+  Game.prototype.pickName = function (){
     var nameIndex = Math.floor(Math.random() * this.namesArray.length);
     this.name = this.namesArray.splice(nameIndex, 1)[0].toLowerCase();
+    if(this.name.indexOf("-") > -1){
+      this.pickName();
+      return;
+    }
     console.log("The name is " + this.name + ".");
     this.letterHash = Object.create(null);
     for(var i = 0; i < this.name.length; i++ ){
@@ -65,7 +69,7 @@
     }
   };
   
-  // see if guess has already been made.  if it has, message the user. else, add the guess to previousGuesses and reflect in guess history.  
+  // see if guess has already been made.  if it has, message the user. else, add the guess to prevGuesses and reflect in guess history.  
   Game.prototype.checkPrevGuesses = function(character){
     if(this.prevGuesses[character]){
       $("#message").html("You've already guessed that letter!");
@@ -100,7 +104,8 @@
   // if user has lost, tell user and prepare for restart.
   Game.prototype.checkLoss = function(){ 
     if(this.strikes == 6){
-      var message = 'YOU LOSE! Your "friend" has the last name: ' + this.name;
+      var message = 'YOU LOSE! Your so-called "friend" has the last name: ' 
+                      + this.name;
       $("#win-loss").html(message).removeClass().addClass("lose");;
       $("body").off("keyup.turns");
       this.restartPrompt();

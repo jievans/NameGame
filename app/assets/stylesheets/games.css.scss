@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "colors";
 
 .absolute-center {
   margin: auto;
@@ -9,11 +10,33 @@
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
+.game-taunt {
+  background-color: lighten(gray, 15%);
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  
+}
+
 #game-wrapper {
-  height: 350px;
-  width: 570px;
+  height: 600px;
+  width: 650px;
   text-align: center;
   font-family: Helvetica;
+}
+
+.reminder {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#prime-direction {
+  color: $sky-blue;
 }
 
 .no-login {
@@ -25,6 +48,11 @@
   text-align: left;
   width: 275px;
   margin: auto;
+  
+  h3#header {
+    text-align: center;
+    font-weight: bold;
+  }
 }
 
 #strikes-wrapper {
@@ -36,6 +64,11 @@
   display: none;
 }
 
+.board-label {
+  margin-top: 40px;
+  font-size: 25px;
+}
+
 .hang-char {
   display: inline-block;
   width: 30px;
@@ -45,6 +78,7 @@
 }
 
 #hangman-board {
+  margin-top: 65px;
   margin-bottom: 20px;
 }
 
@@ -52,10 +86,6 @@
   position: absolute;
   top: 10px;
   left: 10px;
-}
-
-#hangman-board {
-  margin-top: 80px;
 }
 
 #win-loss, #message, #restart, #guessed-letters {
